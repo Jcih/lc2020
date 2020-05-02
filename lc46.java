@@ -1,6 +1,6 @@
 
 // classic backtrack
-// similar with #131 and #93
+// similar with #131 and #93 , #17
 
 //Solution I   O(n) = n * n!
 class Solution {
