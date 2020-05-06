@@ -1,9 +1,9 @@
 class NumArray {
 
-    int[] sum;
+    int[] sum; //declare
     public NumArray(int[] nums) {
-        if (nums.length > 0) {
-            sum = new int[nums.length];
+        if (nums.length > 0) { // corner case
+            sum = new int[nums.length]; // initialize
             sum[0] = nums[0];
             for (int i = 1; i < nums.length; i++) {
                 sum[i] = sum[i - 1] + nums[i];
@@ -13,7 +13,7 @@ class NumArray {
     
     public int sumRange(int i, int j) {
         
-        if (i > 0) {
+        if (i > 0) { // corner case
             return sum[j] - sum[i - 1];
         } else {
             return sum[j];
