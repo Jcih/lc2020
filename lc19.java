@@ -65,6 +65,7 @@ class Solution {
             fast = fast.next;
         }
         
+        //n = len means remove the first node
         if (fast == null) {
             return head.next;
         }

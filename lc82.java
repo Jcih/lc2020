@@ -24,6 +24,6 @@ class Solution {
                 p = p.next;
             }
         }
-        return t.next;
+        return t.next; // deal with head duplicat: 1, 1, 1, 2, 2
     }
 }

@@ -1,3 +1,5 @@
+//Solution I
+//https://www.youtube.com/watch?v=GSJuwQzKSnI
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -41,5 +43,46 @@ class Solution {
         
         tail.next = cur_node;
         return head;
+    }
+}
+
+
+
+
+//Solution II
+//https://www.youtube.com/watch?v=wk8-_M-2fzI
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if (head == null) {
+            return head;
+        }
+        
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        for (int i = 0; i < m - 1; i++) {
+            pre = pre.next;
+        }
+        
+        ListNode cur = pre.next;
+        
+        for (int i = 0; i < n - m; i++) {
+            ListNode next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+        
+        return dummy.next;
     }
 }

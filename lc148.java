@@ -62,3 +62,69 @@ class Solution {
         return head.next;
     }
 }
+
+
+
+
+
+//Solution II
+//https://www.youtube.com/watch?v=pNTc1bM1z-4
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        
+        ListNode tmp = head;
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while (fast != null && fast.next != null) {
+            tmp = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        tmp.next = null;//tail of first half   , slow = head of 2nd half, fast = tail of 2nd half
+        
+        ListNode left_side = sortList(head);
+        ListNode right_side = sortList(slow);
+        
+        return merge(left_side, right_side);
+        
+    }
+    
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode sorted_tmp = new ListNode(0);
+        ListNode cur = sorted_tmp;
+        
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        
+        if (l1 != null) {
+            cur.next = l1;
+            l1 = l1.next;
+        }
+        
+        if (l2 != null) {
+            cur.next = l2;
+            l2 = l2.next;
+        }
+        return sorted_tmp.next;
+    }
+}
