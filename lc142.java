@@ -28,12 +28,13 @@ public class Solution {
                 break;
         }
         
-        //if not have this, will get run time error. don't know why
+        //if not have this, will get run time error. don't know why 
+        // now I know, this means linked list has no cycle, code exit while 
         if (fast == null || fast.next == null)
             return null;
         
         slow = head;
-        //get circle's start point
+        //get circle's start point, how to prove?
         while (fast != slow) {
             slow = slow.next;
             fast = fast.next;

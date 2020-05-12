@@ -276,7 +276,384 @@ class Solution {
 	}
 }
 
+// Linked list trainning 20200511
+
+//138. Copy List with Random Pointer
+
+class Solution{
+	public Node copyRandomList(Node head) {
+		if (head == null)
+			return head;
+		
+		//copy a same node after each node
+		Node cur = head;
+		while (cur != null) {
+			Node tmp = new Node(cur.val);
+			tmp.next = cur.next;
+			cur.next = tmp;
+			cur = tmp.next;
+		}
+
+		//copy the random pointer to the copied nodes
+		cur = head;
+		while (cur != null) {
+			if (cur.random != null)
+				cur.next.random = cur.random.next;
+			cur = cur.next.next;
+		}
+
+		//break two lists
+		cur = head;
+		Node dummy = head.next;
+		while (cur != null) {
+			Node tmp = cur.next;
+			cur.next = tmp.next;
+			if (tmp.next != null)
+				tmp.next = tmp.next.next;
+			cur = cur.next;
+		}
+		return dummy;
+
+	}
+}
+
+//141 Linked List Cycle
+class Solution {
+	public boolean hasCycle(ListNode head) {
+		if (head == null || head.next == null)
+			return false;
+		ListNode slow = head;
+		ListNode fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast)
+				return true;
+		}
+		return false;
+	}
+}
+
+//142. Linked List Cycle II
+class Solution {
+	public ListNode detectCycle(ListNode head) {
+		if (head == null || head.next == null)
+			return null;
+		ListNode slow = head;
+		ListNode fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			//has cycle
+			if (slow == fast)
+				break;
+		}
+        
+        //no cycle
+        if (fast == null || fast.next == null)
+            return null;
+
+		slow = head;
+		while (slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+		return slow;
+	}
+}
+
+//143. Reorder List, need repeat
+class Solution {
+    public void reorderList(ListNode head) {
+		if (head == null || head.next == null)
+			return;
+		//find the mid node
+		ListNode slow = head;
+		ListNode fast = head;
+        ListNode l1 = head;
+        ListNode prev = null;// tail of first half
+
+		while (fast != null && fast.next != null) {
+            prev = slow;
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+        prev.next = null;
+
+		ListNode l2 = reverse(slow);
+		merge(l1, l2);
+	}
+
+	private ListNode reverse(ListNode head) {
+		if (head == null)
+			return head;
+		ListNode prev = null;
+		ListNode cur = head;
+		while (cur != null) { // no cur.next != null
+			ListNode next = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = next;
+		}
+		return prev;
+	}
+
+
+	private void merge(ListNode l1, ListNode l2) {
+		// merge two listNode by order
+		while (l1 != null) {
+            ListNode l1_next = l1.next;
+            ListNode l2_next = l2.next;
+            l1.next = l2;
+            
+            if (l1_next == null)
+                break;
+            l2.next = l1_next;
+            
+            l1 = l1_next;
+            l2 = l2_next;
+        }
+	}
+}
+
+
+//147. Insertion Sort List  . not understand, need extra review and practice
+class Solution {
+	public ListNode insertionSortList(ListNode head) {
+		ListNode dummy = new ListNode(0);
+		ListNode pre = head;
+		ListNode cur = head;
+		dummy.next = pre;
+
+		while (cur != null) {
+			if (pre.val > cur.val) {
+				pre.next = cur.next;
+				ListNode headN = dummy;
+				while (headN.next != null && headN.next.val < cur.val) {
+					headN = headN.next;
+				}
+				cur.next = headN.next;
+				headN.next = cur;
+				cur = pre.next;
+
+			} else {
+				pre = cur;
+				cur = cur.next;
+			}
+		}
+		return dummy.next;
+	}
+}
+
+
+//148. Sort List
+// merge sort , need extra review and practice
+class Solution {
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        
+        ListNode tmp = head;
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while (fast != null && fast.next != null) {
+            tmp = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        tmp.next = null;//tail of first half   , slow = head of 2nd half, fast = tail of 2nd half
+        
+        ListNode left_side = sortList(head);
+        ListNode right_side = sortList(slow);
+        
+        return merge(left_side, right_side);
+        
+    }
+    
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode sorted_tmp = new ListNode(0);
+        ListNode cur = sorted_tmp;
+        
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        
+        if (l1 != null) {
+            cur.next = l1;
+            l1 = l1.next;
+        }
+        
+        if (l2 != null) {
+            cur.next = l2;
+            l2 = l2.next;
+        }
+        return sorted_tmp.next;
+    }
+}
+
+//160 Intersection of Two linked lists
+public class Solution {
+	public ListNode getIntersectionNode(ListNode headA, headB) {
+		if (headA == null || headB == null)
+			return null;
+		ListNode dummyA = headA;
+		ListNode dummyB = headB;
+
+		int lenA = 0;
+		int lenB = 0;
+
+		while (dummyA != null) {
+			lenA++;
+			dummyA = dummyA.next;
+		}
+
+		while (dummyB != null) {
+			lenB++;
+			dummyB = dummyB.next;
+		}
+
+		int diff = lenA - lenB;
+		dummyA = headA;
+		dummyB = headB;
+
+		if (diff > 0) {
+			//dummyA move diff steps
+			for (int i = 0; i < diff; i++) {	
+				dummyA = dummyA.next;
+			}
+
+		} else {
+			//dummyB move diff steps
+			for (int i = 0; i < Math.abs(diff); i++) {	
+				dummyB = dummyB.next;
+			}
+		}
+
+		while (dummyA != null && dummyB != null) {
+			if (dummyA == dummyB)
+				return dummyA;
+			dummyA = dummyA.next;
+			dummyB = dummyB.next;
+			
+		}
+		return null;
+
+	}
+}
+
+//203 Remove Linked List Elements
+class Solution {
+	public ListNode removeElements(ListNode head, int val) {
+		if (head == null)
+			return head;
+
+		ListNode dummy = new ListNode(0);
+		dummy.next = head;
+		ListNode cur = dummy;
+
+		while (cur.next != null) {
+			if (cur.next.val == val) {
+				cur.next = cur.next.next;
+			} else {
+				cur = cur.next;
+			}
+		}
+		return dummy.next;
+	}
+}
+
+//206 Reverse Linked List
+
+//Iterative
+class Solution {
+	public ListNode reverseList(ListNode head) {
+		ListNode prev = null;
+		ListNode cur = head;
+
+		while (cur != null) {
+			ListNode next = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = next;
+		}
+		return prev;
+	}
+}
+
+//Recursion
+class Solution {
+	public ListNode reverseList(ListNode head) {
+		if (head == null || head.next == null)
+			return head;
+
+		ListNode p = reverseList(head.next);
+		head.next.next = head;
+		head.next = null;
+		return p;
+	}
+}
 
 
 
+//234. Palindrome Linked List
+class Solution {
+	public boolean isPalindrome(ListNode head) {
+		//1. get the mid point
+		//2. reverse the 2nd half list
+		//3. traverse the 1st half and 2nd half and compare them
 
+		//corner case
+		if (head == null || head.next == null)
+			return true;
+
+		//get the mid pointer
+		ListNode slow = head, fast = head;
+
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		ListNode l2 = reverse(slow);
+		ListNode l1 = head;
+
+		while (l1 != null & l2 != null) {
+			if (l1.val != l2.val) {
+				return false;
+			} else {
+				l1 = l1.next;
+				l2 = l2.next;
+			}
+
+		}
+
+		return true;
+	}
+	private ListNode reverse(ListNode head) {
+		if (head == null || head.next == null)
+			return head;
+		ListNode p = reverse(head.next);
+		head.next.next = head;
+		head.next = null;
+		return p;
+	}
+}
+
+
+//237  Delete Node in a Linked List
+class Solution {
+	public void deleteNode(ListNode node) {
+		node.val = node.next.val;
+		node.next = node.next.next;
+	}
+}
