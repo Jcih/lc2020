@@ -657,3 +657,144 @@ class Solution {
 		node.next = node.next.next;
 	}
 }
+
+
+/*
+ *Linked List training 20200512
+ *
+ */
+
+//238 Odd even linked list
+class Solution {
+	public ListNode oddEvenList(ListNode head) {
+		if (head == null || head.next == null)
+			return head;
+		ListNode odd = head;
+		ListNode dummy1 = odd;
+		ListNode even = head.next;
+		ListNode dummy2 = even;
+
+		while (dummy1 != null && dummy1.next != null && dummy2.next != null && dummy2 != null) {
+			dummy1.next = dummy1.next.next;
+			dummy1 = dummy1.next;
+
+			dummy2.next = dummy2.next.next;
+			dummy2 = dummy2.next;
+		}
+
+		dummy1.next = even;
+		return odd;
+
+
+	}
+}
+
+//445. Add Two Numbers II
+class Solution {
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		if (l1 == null)
+			return l2;
+		if (l2 == null)
+			return l1;
+		Stack<ListNode> s1 = new Stack<>();
+		Stack<ListNode> s2 = new Stack<>();
+
+		ListNode dummy1 = l1;
+		ListNode dummy2 = l2;
+		while (l1 != null) {
+			s1.push(dummy1);
+			dummy1 = dummy1.next;
+		}
+		while (l2 != null) {
+			s2.push(dummy2);
+			dummy2 = dummy2.next;
+		}
+
+		
+		int carry = 0;
+		ListNode dummy3 = new ListNode(0);
+		ListNode p = dummy3;
+		while (!s1.isEmpty() || !s2.isEmpty()) {
+			int sum = 0;
+
+			if (!s1.isEmpty()) {
+				sum += s1.pop();
+			}
+			if (!s2.isEmpty()) {
+				sum += s2.pop();
+			}
+
+			sum += carry;
+
+			ListNode tmp = new ListNode(sum % 10);
+			p.next = tmp;
+			carry = sum / 10;
+			p = p.next;
+
+		}
+		if (carry > 0) {
+			p.next = new ListNode(1);
+		}
+
+		ListNode res = reverse(dummy3.next);
+		return res;
+	}
+
+	private ListNode reverse(ListNode head) {
+		ListNode prev = null;
+		ListNode cur = head;
+		while (cur != null) {
+			ListNode next = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = next;
+		}
+		return prev;
+	}
+}
+
+//876 Middle of the Linked List
+class Solution {
+	public ListNode middleNode(ListNode head) {
+		if (head == null || head.next == null) {
+			return head;
+		} 
+
+		ListNode slow = head;
+		ListNode fast = head;
+		while (fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow;
+	}
+}
+
+//1019 Next Greater Node in Linked List
+//https://www.youtube.com/watch?v=wVsGnpXoxPI
+class Solution {
+	public int[] nextLargerNodes(ListNode head) {
+		ArrayList<Integer> node_vals = new ArrayList<>();
+
+		ListNode cur = head;
+		while (cur != null) {
+			node_vals.add(cur.val);
+			cur = cur.next;
+		}
+
+		int[] res = new int[node_vals.size()];
+
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < node_vals.size(); i++) {
+
+			// don't understand
+			while (!stack.isEmpty() && node_vals.get(stack.peek()) < node_vals.get(i)) {
+				res[stack.pop()] = node_vals.get(i);
+			}
+			stack.push(i);
+		}
+		return res;
+
+	}
+}
