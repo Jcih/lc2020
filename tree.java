@@ -620,7 +620,7 @@ class BSTIterator {
 } 
 
 
-//199 Binary Search Tree
+//199 Binary Tree Right Side View
 class Solution {
 	public List<Integer> rightSideView(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
@@ -644,5 +644,122 @@ class Solution {
 			}
 		}
 		return res;
+	}
+}
+
+//226 Invert Binary Tree
+class Solution {
+	public TreeNode invertTree(TreeNode root) {
+        if (root == null)
+        	return root;
+
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
+	}
+}
+
+
+//230. Kth Smallest Element in a BST
+//https://www.youtube.com/watch?v=C6r1fDKAW_o
+//inorder traverse
+class Solution {
+	public int kthSmallest(TreeNode root, int k) {
+		int[] nums = new int[2];
+		helper(root, k, nums);
+		return nums[1];
+	}
+
+	private void helper(TreeNode root, int k, int[] nums) {
+		if (root == null)
+			return;
+		helper(root.left, k, nums);
+		if (++nums[0] == k) {
+			nums[1] = root.val;
+			return;
+		}
+		helper(root.right, k, nums);
+
+	}
+}
+
+
+
+//235  Lowest Common Ancestor of a Binary Search Tree
+//https://www.youtube.com/watch?v=kulWKd3BUcI
+class Solution {
+	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+		if (p.val < root.val && q.val < root.val) {
+			return lowestCommonAncestor(root.left, p, q);
+		} else if (p.val > root.val && q.val > root.val) {
+			return lowestCommonAncestor(root.right, p, q);
+		} else {
+			return root;
+		}
+	}
+}
+
+//236 Lowest Common Ancestor of a Binary Tree
+//https://www.youtube.com/watch?v=13m9ZCB8gjw
+class Solution {
+	 public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+	 	 if (root == null) return null;
+	 	 if (root == p || root == q)
+	 	 	return root;
+	 	 TreeNode left = lowestCommonAncestor(root.left, p, q);
+	 	 TreeNode right = lowestCommonAncestor(root.right, p, q);
+	 	 if (left == null && right == null) return null;
+	 	 if (left != null && right != null) return root;
+	 	 return left != null ? left : right;
+	 }
+}
+
+//257 Binary Tree Paths
+//backtracking
+class Solution {
+	public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        if (root == null)
+        	return res;
+        String str = "";
+        helper(root, res, str);
+        return res;
+	}
+	private void helper(TreeNode root, List<String> res, String str) {
+		
+        str = str + root.val;
+
+		//basecase
+		if (root.left == null && root.right == null) {
+			res.add(str);
+			return;
+		}
+
+		if (root.left != null) {
+			helper(root.left, res, str + "->");
+		}
+
+		if (root.right != null) {
+			helper(root.right, res, str + "->");
+        }
+	}
+}
+
+//337  House Robber III
+
+
+//404 Sum of Left Leaves
+class Solution {
+	public int sumOfLeftLeaves(TreeNode root) {
+		if (root == null)
+			return 0;
+		else if (root.left != null && root.left.left == null && root.left.right == null) {
+			return root.left.val + sumOfLeftLeaves(root.right);
+		} else {
+			return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
+		}
 	}
 }
