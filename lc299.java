@@ -16,3 +16,28 @@ class Solution {
         return cntA + "A" + cntB + "B";
     }
 }
+
+//
+class Solution {
+    public String getHint(String secret, String guess) {
+        int countA = 0;
+        int countB = 0;
+        
+        
+        int[] nums = new int[10];
+        for (int i = 0; i < secret.length(); i++) {
+            if (secret.charAt(i) == guess.charAt(i)) {
+                countA++;
+            } else {
+                if (nums[secret.charAt(i) - '0'] < 0)
+                    countB++;
+                if (nums[guess.charAt(i) - '0'] > 0)
+                    countB++;
+                
+                nums[secret.charAt(i) - '0']++;
+                nums[guess.charAt(i) - '0']--;
+            }
+        }
+        return countA + "A" + countB + "B";
+    }
+}

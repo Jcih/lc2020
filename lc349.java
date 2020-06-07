@@ -32,27 +32,48 @@ class Solution {
 //Solution II
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        HashSet<Integer> set = new HashSet<>();
-        
-        for (int i : nums1) {
-            set.add(i);
-        }
+        Set<Integer> set1 = new HashSet<>();
+        for (int i : nums1)
+            set1.add(i);
         
         ArrayList<Integer> res = new ArrayList<>();
         
         for (int j : nums2) {
-            if (set.contains(j)) {
+            if (set1.contains(j)) {
                 res.add(j);
-                set.remove(j);
+                set1.remove(j);
             }
         }
-        
-        int[] myArray = new int[res.size()];
+        int[] arr = new int[res.size()];
         for (int i = 0; i < res.size(); i++) {
-            myArray[i] = res.get(i);
+            arr[i] = res.get(i);
         }
+        return arr;
+    }
+    }
+}
+
+
+
+//Solutino III
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        for (int i : nums1)
+            set1.add(i);
         
-        return myArray;
+        Set<Integer> set2 = new HashSet<>();
+        for (int i : nums2)
+            set2.add(i);
+        
+        set1.retainAll(set2);
+        
+    
+        int idx = 0;
+        int[] arr = new int[set1.size()];
+        for (int k : set1) {
+            arr[idx++] = k;
+        }
+        return arr;
     }
 }

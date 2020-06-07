@@ -1,4 +1,5 @@
 //sliding window 
+//https://www.youtube.com/watch?v=jKF9AcyBZ6E
 // credit : https://www.programcreek.com/2014/05/leetcode-minimum-size-subarray-sum-java/
 //https://www.cnblogs.com/grandyang/p/4501934.html
 
@@ -35,5 +36,26 @@ class Solution {
         return minLen == Integer.MAX_VALUE ? 0 : minLen;
         
         
+    }
+}
+
+
+//Solution II
+class Solution {
+    public int minSubArrayLen(int s, int[] nums) {
+        int res = Integer.MAX_VALUE;
+        int left = 0;
+        int val_sum = 0;
+        
+        for (int i = 0; i < nums.length; i++) {
+            val_sum += nums[i];
+            
+            while (val_sum >= s) {
+                res = Math.min(res, i + 1 - left);
+                val_sum -= nums[left];
+                left++;
+            }
+        }
+        return res != Integer.MAX_VALUE ? res : 0;
     }
 }

@@ -1,3 +1,5 @@
+//https://blog.csdn.net/fuxuemingzhu/article/details/51348629
+
 class Solution {
     public List<Integer> getRow(int rowIndex) {
         ArrayList<Integer> result = new ArrayList<>();
@@ -15,3 +17,28 @@ class Solution {
 	return result;
     }
 }
+
+
+/**
+1
+1 1
+
+   res.size() - 2         res.size() - 1 
+1             2               1
+              j               j + 1
+
+1  2   3   
+      j + 1
+
+1   2    3
+j  j+ 1
+
+1   3    3
+   j + 1
+
+
+
+1  3  3
+1  3  3  1  
+
+*/ 

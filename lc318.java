@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/maximum-product-of-word-lengths/discuss/76959/JAVA-Easy-Version-To-Understand!!!!!!!!!!!!!!!!!
+
 class Solution {
     public int maxProduct(String[] words) {
         int n = words.length;

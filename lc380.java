@@ -16,7 +16,7 @@ class RandomizedSet {
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     public boolean insert(int val) {
         if ( map.containsKey(val)) return false;
-        map.put(val, list.size());
+        map.put(val, list.size());// list.size() == the index of the value in list
         list.add(val);
         return true;
     }
@@ -27,6 +27,8 @@ class RandomizedSet {
         int index = map.get(val);
         if (index != list.size() - 1) {
             int last = list.get(list.size() - 1);
+            //set(int index, E element)
+            //Replaces the element at the specified position in this list with the specified element (optional operation).
             list.set(index, last);
             map.put(last, index);
         }

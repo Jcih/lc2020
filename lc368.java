@@ -1,6 +1,7 @@
 
 
 //不理解
+//https://leetcode.com/problems/largest-divisible-subset/discuss/84006/Classic-DP-solution-similar-to-LIS-O(n2)
 class Solution {
     public List<Integer> largestDivisibleSubset(int[] nums) {
         int len = nums.length;

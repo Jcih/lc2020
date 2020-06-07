@@ -20,6 +20,7 @@ class Solution {
     public int[] shuffle() {
         int[] arr = nums.clone();
         
+        // need memorize
         for (int i = 1; i < arr.length; i++) {
             int j = rand.nextInt(i + 1);
             swap(arr, i, j);

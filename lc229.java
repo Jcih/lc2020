@@ -21,3 +21,7 @@ class Solution {
         
     }
 }
+
+
+//https://cheonhyangzhang.wordpress.com/2017/01/04/229-leetcode-java-majority-element-ii-medium/
+//Moore Voting Algorithm

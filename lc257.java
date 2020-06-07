@@ -34,3 +34,48 @@ class Solution {
             
     }
 }
+
+//Solutino II
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        String str = "";
+        helper(res, str, root);
+        return res;
+    }
+    
+    private void helper(List<String> res, String str, TreeNode root) {
+        
+        if (root == null)
+            return;
+        str = str + root.val;
+        
+        
+        if (root.left == null && root.right == null) {
+            res.add(new String(str));
+            return;
+        }
+        
+        if (root.left != null) {
+            helper(res, str + "->", root.left);
+        }
+        if (root.right != null) {
+            helper(res, str + "->", root.right);
+        }
+    }
+}

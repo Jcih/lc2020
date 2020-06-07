@@ -1,4 +1,5 @@
 //credit: https://mlixin.com/2019/11/26/leetcode-386/
+//https://leetcode.com/problems/lexicographical-numbers/discuss/86231/Simple-Java-DFS-Solution
 class Solution {
     public List<Integer> lexicalOrder(int n) {
         List<Integer> result = new ArrayList<>();

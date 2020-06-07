@@ -12,7 +12,8 @@ public class Solution extends GuessGame {
         
         int left = 1, right = n;
         
-        while (left <= right ) {
+        while (left <= right ) {   // if n == 1, left == right
+
             int mid = left + (right - left) / 2;
             
             if (guess(mid) == 1) {

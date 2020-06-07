@@ -22,3 +22,5 @@ class Solution {
         return q.peek();
     }
 }
+
+//https://www.youtube.com/watch?v=FrWq2rznPLQ

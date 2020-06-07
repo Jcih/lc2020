@@ -22,7 +22,7 @@ class Solution {
         
         int left = 0, right = len - 1;
         
-        while (left <= right) {
+        while (left <= right) { // caution: <= not <
             int mid = left + (right - left) / 2;
             if (citations[mid] == len - mid)
                 return len - mid;

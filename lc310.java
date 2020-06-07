@@ -19,6 +19,8 @@ class Solution {
         for (int i = 0; i < n; i++) {
             if (graph.get(i).size() == 1) leaves.add(i);
         }
+
+        ////not understand
         while (n > 2) {
             n -= leaves.size();
             List<Integer> newLeaves = new ArrayList<>();

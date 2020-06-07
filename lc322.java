@@ -1,8 +1,10 @@
+
+//https://www.youtube.com/watch?v=1R0_7HqNaW0
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[] dp = new int[amount + 1];
+        int[] dp = new int[amount + 1];//why amount + 1, because we start from 0 , to amount, so total is amount + 1
         Arrays.fill(dp, amount + 1);
-        dp[0] = 0;
+        dp[0] = 0;//initiate the first case
         
         for (int i = 0; i <= amount; i++) {
             for (int j = 0; j < coins.length; j++) {

@@ -19,7 +19,7 @@ class Solution {
         }
         int size = list.size();
         
-        return list.get(rand.nextInt(list.size()));
+        return list.get(rand.nextInt(size));
         
     }
 }

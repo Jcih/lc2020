@@ -9,6 +9,7 @@ class Solution {
         return Math.max(robDP(nums, 0, n - 2), robDP(nums, 1, n - 1));
     }
     
+    //lc198
     int robDP(int[] nums, int first, int last) {
         int n = last - first  + 1;
         if (n == 0)

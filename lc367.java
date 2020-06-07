@@ -3,6 +3,8 @@
 
 class Solution {
     public boolean isPerfectSquare(int num) {
+        // why use long ?    mid * mid may be greater than 2^ 31
+
         long left = 0;
         long right = num;
         long mul = 0;

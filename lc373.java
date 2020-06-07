@@ -28,3 +28,30 @@ class Solution {
         return all;
     }
     }
+
+
+    // 20200530
+    class Solution {
+    public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> b[0] + b[1] - a[0] - a[1]);// maxHeap, from large to small sort.
+        for (int i = 0; i < nums1.length; i++) {
+            for (int j = 0; j < nums2.length; j++) {
+                pq.offer(new int[] {nums1[i], nums2[j]});
+                if (pq.size() > k) {
+                    // keep k smallest objects
+                    pq.poll();
+                }
+            }
+        }
+        
+        List<List<Integer>> res = new ArrayList<>();
+        while (pq.size() > 0) {
+            List<Integer> cur = new ArrayList<>();
+            int[] item = pq.poll();
+            cur.add(item[0]);
+            cur.add(item[1]);
+            res.add(0, cur);
+        }
+        return res;
+    }
+}
