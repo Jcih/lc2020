@@ -1,5 +1,5 @@
 //https://www.youtube.com/watch?v=wVsGnpXoxPI
-
+//Very similar to this problem 503. Next Greater Element II
 /**
  * Definition for singly-linked list.
  * public class ListNode {

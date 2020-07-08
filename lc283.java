@@ -40,3 +40,22 @@ class Solution {
         
     }
 }
+
+
+//Solution III
+//https://www.youtube.com/watch?v=0rPuILjoVsg
+class Solution {
+    public void moveZeroes(int[] nums) {
+
+        int anc = 0;
+        
+        for (int i = 0; i <= nums.length - 1; i++) {
+            if (nums[i] != 0) {
+                int tmp = nums[anc];
+                nums[anc] = nums[i];
+                nums[i] = tmp;
+                anc++;
+            }
+        }
+    }
+}

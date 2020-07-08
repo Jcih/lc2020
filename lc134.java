@@ -42,7 +42,7 @@ class Solution {
         for (int i = 0; i < gas.length; i++) {
             int cur = gas[i] - cost[i];
             if (left + cur < 0) {// could not arrive the next point
-                start = i + 1;
+                start = i + 1;// why not start++?   index i is not qualified, at least should start from i + 1;
                 left = 0;
             } else {
                 left += cur;

@@ -1,3 +1,4 @@
+//https://www.youtube.com/watch?v=hLQYQ4zj0qg
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         

@@ -1,4 +1,5 @@
 //https://www.youtube.com/watch?v=vYYNp0Jrdv0
+//https://www.youtube.com/watch?v=m9TrOL1ETxI
 class Solution {
     public boolean exist(char[][] board, String word) {
         if (board == null || board.length == 0)

@@ -65,4 +65,38 @@ class Solution {
         
         return dummy.next;
     }
+
+
+
+//
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
+        
+        
+        ListNode dummy = new ListNode(0);
+        ListNode l3 = dummy;
+        
+        while (l1 != null && l2 != null) {
+            int v1 =  l1.val;
+            int v2 =  l2.val;
+            
+            if (v1 < v2) {
+                l3.next = new ListNode(v1);
+                
+                l1 = l1.next;
+            } else {
+                l3.next = new ListNode(v2);
+                
+                l2 = l2.next;
+            }
+            l3 = l3.next;
+        }
+        l3.next = (l1 == null) ? l2 : l1;
+        
+        return dummy.next;
+    }
 }

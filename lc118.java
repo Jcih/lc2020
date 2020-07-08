@@ -1,3 +1,4 @@
+//https://www.youtube.com/watch?v=icoql2WKmbA&t=492s
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<>();

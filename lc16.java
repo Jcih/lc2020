@@ -3,7 +3,7 @@ class Solution {
         
         Arrays.sort(nums);
         int res = 0;
-        int min = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE; // min diff
         
         for (int i = 0; i < nums.length; i++) {
             int j = i + 1;

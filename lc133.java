@@ -88,3 +88,31 @@ class Solution {
         return map.get(node);
     }
 }
+
+
+
+
+//Solution III
+class Solution {
+    HashMap<Node, Node> clonedNodes;
+    public Solution() {
+        clonedNodes = new HashMap<Node,Node>();
+    }
+
+    public Node cloneGraph(Node node) {
+        if(node==null) return node;
+        if(clonedNodes.get(node) != null)
+            return clonedNodes.get(node);
+        
+        Node clone = new Node(node.val);
+        clonedNodes.put(node, clone);
+        
+        ArrayList<Node> neighbors = new ArrayList<Node>();
+        for(int i=0; i<node.neighbors.size(); i++) {
+            neighbors.add(cloneGraph(node.neighbors.get(i)));
+        }
+        clone.neighbors = neighbors;
+        
+        return clone;
+    }
+}

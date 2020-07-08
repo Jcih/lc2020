@@ -18,7 +18,7 @@ class Solution {
                 }
                 
 
-                /////dont understand this part
+                /////dont understand this part// to get cube position
                 int rowIdx = 3 * (i / 3) + j / 3;
                 int colIdx = 3 * (i % 3) + j % 3;
                 /////

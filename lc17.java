@@ -30,3 +30,41 @@ class Solution {
         return res;
     }
 }
+
+//https://www.youtube.com/watch?v=21OuwqIC56E
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> res = new ArrayList<>();
+        if (digits == null || digits.length() == 0)
+            return res;
+        String[] mapping = {
+            "0",
+            "1",
+            "abc",
+            "def",
+            "ghi",
+            "jkl",
+            "mno",
+            "pqrs",
+            "tuv",
+            "wxyz"
+        };
+
+        helper(res, digits, "", 0, mapping);
+        return res;
+    }
+    private void helper(List<String> res, String digits, String cur, int idx, String[] mapping) {
+        if (idx == digits.length()) {
+            res.add(new String(cur));
+            return;
+        }
+
+         String str = mapping[digits.charAt(idx) - '0'];
+        for (int i = 0; i < str.length(); i++) {
+            
+            //cur = cur + str.charAt(i);
+            helper(res, digits, cur + str.charAt(i), idx + 1, mapping);
+            //cur = cur.substring(0, cur.length() - 2);
+        }
+    }
+}
