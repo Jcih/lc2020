@@ -1,3 +1,6 @@
+//20200725 care about corner case
+
+
 class NumArray {
 
     int[] sum; //declare

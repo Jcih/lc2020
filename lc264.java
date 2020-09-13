@@ -1,5 +1,6 @@
 //https://blog.csdn.net/zdavb/article/details/47948281
 //https://www.programcreek.com/2014/05/leetcode-ugly-number-ii-java/
+//20200811
 class Solution {
     public int nthUglyNumber(int n) {
         if (n <= 0)

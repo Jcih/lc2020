@@ -3,6 +3,8 @@
 //https://www.youtube.com/results?search_query=is+graph+bipartite+leetcode
 //https://www.youtube.com/watch?v=Gmp51E8HVVs
 
+//similar to 886
+
 class Solution {
     public boolean isBipartite(int[][] graph) {
         int nodes = graph.length;

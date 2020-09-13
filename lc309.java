@@ -21,3 +21,25 @@ class Solution {
         return Math.max(sellProf, restProf);
     }
 }
+
+
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75927/Share-my-thinking-processpublic int maxProfit(int[] prices) {
+class Solution {
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length == 0)
+            return 0;
+        
+        int sell = 0;
+        int prev_sell = 0;
+        int buy = Integer.MIN_VALUE;
+        int prev_buy;
+        
+        for (int price : prices) {
+            prev_buy = buy;
+            buy = Math.max(prev_sell - price, prev_buy);
+            prev_sell = sell;
+            sell = Math.max(prev_buy + price, prev_sell);
+        }
+        return sell;
+    }
+}

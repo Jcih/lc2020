@@ -1,6 +1,8 @@
 // fast and slow pointer
 // did 2 times
 
+// did 4th times, 20200720, try to approve the method.
+
 /**
  * Definition for singly-linked list.
  * class ListNode {

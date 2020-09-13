@@ -627,7 +627,7 @@ class Solution {
 		ListNode l2 = reverse(slow);
 		ListNode l1 = head;
 
-		while (l1 != null & l2 != null) {
+		while (l1 != null && l2 != null) {
 			if (l1.val != l2.val) {
 				return false;
 			} else {

@@ -1,4 +1,5 @@
 //https://leetcode.com/problems/remove-duplicate-letters/discuss/76768/A-short-O(n)-recursive-greedy-solution
+//greedy
 class Solution {
     public String removeDuplicateLetters(String s) {
         int[] cnt = new int[26];

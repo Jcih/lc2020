@@ -35,3 +35,45 @@ class Solution {
         return sb.toString();
     }
 }
+
+
+
+
+//20200903
+class Solution {
+    public String fractionToDecimal(int numerator, int denominator) {
+        if (numerator == 0)
+            return "0";
+        
+        
+        Set<Integer> de_set = new HashSet<>();
+        StringBuilder sb = new StringBuilder();
+        if ((long) numerator * (long) denominator < 0) {
+            sb.append("-");
+        }
+        
+        long n = Math.abs((long) numerator);
+        long d = Math.abs((long) denominator);
+        
+        long remainder = n % d;
+        
+        sb.append(n / d);
+        if (remainder != 0) {
+            sb.append(".");
+        }
+
+        HashMap<Long, Integer> map = new HashMap<>();
+        while (remainder != 0) {
+            if (map.containsKey(remainder)) {
+                sb.insert(map.get(remainder), "(");
+                sb.append(")");
+                break;
+            }
+            map.put(remainder, sb.length());
+            remainder *= 10;
+            sb.append(remainder / d);
+            remainder %= d;
+        }
+        return sb.toString();
+    }
+}

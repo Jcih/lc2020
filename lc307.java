@@ -73,3 +73,34 @@ class NumArray {
  * obj.update(i,val);
  * int param_2 = obj.sumRange(i,j);
  */
+
+
+
+//Brute force
+class NumArray {
+
+
+    private int[] arr;
+    public NumArray(int[] nums) {
+        arr = nums;
+    }
+    
+    public void update(int i, int val) {
+        arr[i] = val;
+    }
+    
+    public int sumRange(int i, int j) {
+        int sum = 0;
+        for (int l = i; l <= j; l++) {
+            sum += arr[l];
+        }
+        return sum;
+    }
+}
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray obj = new NumArray(nums);
+ * obj.update(i,val);
+ * int param_2 = obj.sumRange(i,j);
+ */

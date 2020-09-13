@@ -24,7 +24,7 @@ class Solution {
         if (index != -1) {
             left = index;
             right = index;
-            while (left >= 0 && nums[left] == target) {
+            while (left >= 0 && nums[left] == target) {  //200717 forgot the "="
                 left--;
             }
             while (right < nums.length && nums[right] == target) {

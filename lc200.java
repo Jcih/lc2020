@@ -1,3 +1,4 @@
+//20200720 error : line 27: grid[i][j] = 0, should be '0'
 class Solution {
     
     public int numIslands(char[][] grid) {

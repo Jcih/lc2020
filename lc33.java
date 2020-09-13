@@ -15,7 +15,7 @@ class Solution {
             if (nums[mid] == target)
                 return mid;
             
-            if (nums[mid] >= nums[left]) {  // be careful about the =
+            if (nums[mid] >= nums[left]) {  // be careful about the = // 200717， missing "="
                 //pivot is on right to mid
                 
                 if (nums[left] <= target && target < nums[mid]) { // be careful about the =

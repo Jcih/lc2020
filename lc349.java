@@ -50,8 +50,8 @@ class Solution {
         }
         return arr;
     }
-    }
 }
+
 
 
 
@@ -75,5 +75,32 @@ class Solution {
             arr[idx++] = k;
         }
         return arr;
+    }
+}
+
+//Solution IV
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set1 = new HashSet<>();
+        
+        for (int i : nums1) {
+            set1.add(i);
+        }
+        
+        Set<Integer> res = new HashSet<>();
+        for (int j : nums2) {
+            if (set1.contains(j)) {
+                res.add(j);
+            }
+        }
+        
+        int n = res.size();
+        int[] ans = new int[n];
+        int idx = 0;
+        for (int i : res) {
+            ans[idx] = i;
+            idx++;
+        }
+        return ans;
     }
 }

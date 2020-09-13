@@ -46,8 +46,29 @@ class Solution {
         return res;
             
     }
-}
 
+
+// same with solution II
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        
+        for (int i : nums) {
+            if (!set.add(i)) {
+                set.remove(i);
+            }
+        }
+        
+        int[] res = new int[2];
+        int i = 0;
+        for (int j : set) {
+            res[i] = j;
+            i++;
+        }
+        
+        return res;
+    }
+}    
 
 
 //Solution III

@@ -23,3 +23,45 @@ class Solution {
         return new String(array);
     }
 }
+
+
+//20200725 two pointers
+class Solution {
+    public String reverseVowels(String s) {
+        if (s == null || s.length() == 0)
+            return s;
+        char[] arr = s.toCharArray();
+        
+        Set<Character> vowels = new HashSet<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+        vowels.add('A');
+        vowels.add('E');
+        vowels.add('I');
+        vowels.add('O');
+        vowels.add('U');
+        
+        int i = 0;
+        int j = s.length() - 1;
+        
+        while (i < j) {
+            
+            while (i < j && !vowels.contains(arr[i])) {
+                i++;
+            }
+            while (i < j && !vowels.contains(arr[j])) {
+                j--;
+            }
+            char tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+            i++;
+            j--;
+        }
+        return new String(arr);
+        
+    }
+}
