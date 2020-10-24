@@ -1,4 +1,5 @@
 //https://www.youtube.com/watch?v=Zb4eRjuPHbM
+//20200921
 class Solution {
     public boolean canJump(int[] nums) {
         int len = nums.length;

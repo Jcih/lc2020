@@ -70,3 +70,42 @@ class Solution {
         return l1.next;
     }
 }
+
+
+//3rd time
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        if (head == null || head.next == null) return head;
+        
+        ListNode dummy1 = new ListNode(0);
+        ListNode dummy2 = new ListNode(0);
+        ListNode p = dummy1;
+        ListNode q = dummy2;
+        
+        ListNode cur = head;
+        
+        while  (cur != null) {
+            if (cur.val < x) {
+                dummy1.next = cur;
+                dummy1 = dummy1.next;
+            } else {
+                dummy2.next = cur;
+                dummy2 = dummy2.next;
+            }
+            cur = cur.next;
+        }
+        dummy2.next = null;
+        dummy1.next = q.next;
+        return p.next;
+    }
+}

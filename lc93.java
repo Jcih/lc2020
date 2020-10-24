@@ -17,7 +17,7 @@ class Solution {
                     sb.append(cur.get(i));
                     if (i < 3) sb.append(".");
                 }
-                res.add(sb.substring(0, sb.length()).toString());
+                res.add(sb.toString());
             }
             return;
         }
