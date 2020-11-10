@@ -1,5 +1,6 @@
 //https://www.programcreek.com/2014/05/leetcode-gray-code-java/
 //Solution I
+//https://leetcode.wang/leetCode-89-Gray-Code.html
 class Solution {
     public List<Integer> grayCode(int n) {
         if(n==0){
