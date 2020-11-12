@@ -40,7 +40,6 @@ class Solution {
     }
 }
 
-
 //Solution II BFS
 /*
 // Definition for a Node.
