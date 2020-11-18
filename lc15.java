@@ -34,3 +34,34 @@ class Solution {
         return res;
     }
 }
+
+
+// Wrong codes
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums == null || nums.length < 3) return res;
+        
+        Arrays.sort(nums);
+        
+        helper(nums, 0, new ArrayList<>(), res, 0);
+        
+        return res;
+    }
+    
+    public void helper(int[] nums, int idx, List<Integer> cur, List<List<Integer>> res, int target) {
+        if (idx > nums.length - 1)
+            return;
+        if (target == 0 && cur.size() == 3) {
+            res.add(new ArrayList<Integer>(cur));
+            return;
+        }
+        
+        for (int i = idx + 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) continue;
+            cur.add(nums[i]);
+            helper(nums, idx + 1 ,cur, res, target - nums[i]);
+            cur.remove(cur.size() - 1);
+        }
+    }
+}
