@@ -15,3 +15,21 @@ class Solution {
         return jumps;
     }
 }
+
+
+
+//greeady
+class Solution {
+    public int jump(int[] nums) {
+        int end = 0, farCanReach = 0, count = 0;
+        for (int i = 0; end < nums.length - 1; end = farCanReach ) {
+            count++;
+            while (i < nums.length && i <= end) {
+                farCanReach = Math.max(farCanReach, i + nums[i]);
+                i++;
+            }
+            if (end == farCanReach) return -1;
+        }
+        return count;
+    }
+}
