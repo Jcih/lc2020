@@ -1,4 +1,6 @@
 //https://github.com/dennyac/simpledb/tree/master/src/main/java/com/dennyac/simpledb
+//https://www.journaldev.com/1392/factory-design-pattern-in-java
+//https://docs.google.com/document/d/17sgulhADBhGNlO2FbuQQbREGBjzt1x0ziDh21Ak4GwE/edit#
 
 class Solution {
 	public static main (String[] args) {
