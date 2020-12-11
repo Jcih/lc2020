@@ -763,3 +763,33 @@ class Solution {
 		}
 	}
 }
+
+
+
+
+//958
+//FACEBOOK
+//https://leetcode.com/problems/check-completeness-of-a-binary-tree/discuss/205682/JavaC%2B%2BPython-BFS-Level-Order-Traversal
+/*
+Use BFS to do a level order traversal,
+add childrens to the bfs queue,
+until we met the first empty node.
+
+For a complete binary tree,
+there should not be any node after we met an empty one.
+*/
+class Solution {
+	public boolean isCompleteTree(TreeNode root) {
+		Queue<TreeNode> q = new LinkedList<>();
+		q.offer(root);
+		while (q.peek() != null) { // 不懂
+			TreeNode tmp = q.poll();
+			q.offer(tmp.left);
+			q.offer(tmp.right);
+		}
+		while (!q.isEmpty() && q.peek() == null) {//不懂
+			q.poll();//不懂
+		}
+		return q.isEmpty();
+	}
+}
