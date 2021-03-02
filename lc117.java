@@ -39,3 +39,67 @@ class Solution {
         return root;
     }
 }
+
+
+
+
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node next;
+
+    public Node() {}
+    
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, Node _left, Node _right, Node _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+*/
+
+class Solution {
+    
+    /**
+    1. test
+    2. data struc,algo: level traverse, BFS, queue
+    3. logic
+    4. result
+    5. analysis
+    ==================================    
+    O(1)
+    */
+    public Node connect(Node root) {
+        Node head = root;
+        Node dummy = new Node(0);
+        Node pre = dummy;
+        
+        while (root != null) {
+            if (root.left != null) {
+                pre.next = root.left;
+                pre = pre.next;
+            }
+            if (root.right != null) {
+                pre.next = root.right;
+                pre = pre.next;
+            }
+            root = root.next;
+            if (root == null) {//reach the end of current layer
+                pre = dummy;//next new layer
+                root = dummy.next;//currrent layer, root comes down one level below to the first available non null node
+                dummy.next = null;  //reset dummyhead back to default null
+            }
+        }
+        return head;
+        
+    }
+}

@@ -1,3 +1,4 @@
+
 //https://www.youtube.com/watch?v=IbcQOdtmvpA
 class Solution {
     public void nextPermutation(int[] nums) {

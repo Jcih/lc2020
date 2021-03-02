@@ -21,7 +21,8 @@ class Solution {
             return null;
         Node p = head;
 
-        //copy every node and insert into list    1 -> 2 -> 3 -> null    ==>>   1 -> 1 -> 2 -> 2 -> 3 -> 3 -> null
+        //copy every node and insert into list    1 -> 2 -> 3 -> null   
+        // ==>>   1 -> 1 -> 2 -> 2 -> 3 -> 3 -> null
         while (p != null) {
             Node copy = new Node(p.val);
             copy.next = p.next;

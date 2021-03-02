@@ -31,6 +31,11 @@ class Solution {
             int mid = low + (high - low)/2;
             int count = 0;
             int j = col;
+            //count number less than mid
+            /*
+            if count<k , meaning that you need to make mid become bigger.
+            else, meaning that you should limit the high.
+            then you get low == high and k == count.**/
             for (int i = 0; i <= row; i++) {
                 while (j >= 0 && matrix[i][j] > mid) {
                     j--;

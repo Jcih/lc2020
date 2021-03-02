@@ -1,3 +1,27 @@
+
+ 
+/*
+1. example
+2. Data Structutr / algo
+    two array: left, right
+3. logic
+    left: if (num[i + 1] > num[i]) candy[i + 1]++;
+    right: if (num[i - 1] > num[i]) right[i - 1] = max(candy[i] + 1, candy[i - 1])
+4. result
+5. analysis
+==========================
+[1, 0, 2]
+
+[1, 1, 1], [2, 1, 1], [2, 1, 2]
+
+==========================
+
+Time: O(N), Space: O(n)
+==========================
+
+
+*/
+
 class Solution {
     public int candy(int[] ratings) {
         if (ratings == null) return 0;

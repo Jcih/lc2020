@@ -4,6 +4,8 @@ class Solution {
         Map<String, String> owner = new HashMap<>();
         Map<String, String> parents = new HashMap<>();
         Map<String, TreeSet<String>> unions = new HashMap<>();
+        
+        //set email's parent to the 1st email in each account
         for (List<String> a : accounts) {
             for (int i = 1; i < a.size(); i++) {
                 parents.put(a.get(i), a.get(i));
@@ -11,6 +13,7 @@ class Solution {
             }
         }
         
+        //update email's parent
         for (List<String> a : accounts) {
             String p = find(a.get(1), parents);
             for (int i = 2; i < a.size(); i++) {

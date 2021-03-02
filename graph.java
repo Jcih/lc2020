@@ -60,15 +60,19 @@ public int find(int[] parent, int i) {
 public void union(int[] parent, int x, int y, int[] rank) {
     int x_root = find(parent, x);
     int y_root = find(parent, y);
-    if (rank[x_root] > rank[y_root]) {
+
+    if (x_root != y_root) {
+        if (rank[x_root] > rank[y_root]) {
         parent[y_root] = x_root;
-    } else if (rank[x_root] < rank[y_root]) {
-        parent[x_root] = y_root;
-    } else {
-        // ==
-        parent[x_root] = y_root;
-        rank[y_root]++;
+        } else if (rank[x_root] < rank[y_root]) {
+            parent[x_root] = y_root;
+        } else {
+            // ==
+            parent[x_root] = y_root;
+            rank[y_root]++;
+        }
     }
+    
 }
 
 ////////////////////////////////////////////////
